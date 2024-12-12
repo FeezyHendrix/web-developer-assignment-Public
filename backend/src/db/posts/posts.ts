@@ -1,5 +1,5 @@
 import { connection } from "../connection";
-import { selectPostsTemplate } from "./query-tamplates";
+import { selectPostsTemplate } from "./query-templates";
 import { Post } from "./types";
 
 export const getPosts = (userId: string): Promise<Post[]> =>
