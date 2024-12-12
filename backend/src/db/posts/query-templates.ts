@@ -9,5 +9,5 @@ export const delelePostsTemplate = `
 `;
 
 export const createPostTemplate = `
-    INSERT INTO posts (title, body, user_id) VALUES (?, ?, ?)
+    INSERT INTO posts (title, body, user_id, created_at) VALUES (?, ?, ?, ?)
 `;

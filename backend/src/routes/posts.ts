@@ -36,7 +36,7 @@ router.post("/", async (req: Request, res: Response) => {
       return;
     }
 
-    await createNewPost(body.title, body.body, body.userId);
+    await createNewPost(body.title, body.body, body.userId, new Date().toISOString());
     res.status(200).send({ message: "Post created successfully" });
     return;
   } catch (error) {
