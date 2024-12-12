@@ -2,6 +2,7 @@ import { error } from "console";
 import { connection } from "../connection";
 import { createPostTemplate, delelePostsTemplate, selectPostsTemplate } from "./query-templates";
 import { Post } from "./types";
+import crypto from "crypto";
 
 export const getPosts = (userId: string): Promise<Post[]> =>
   new Promise((resolve, reject) => {
@@ -26,7 +27,8 @@ export const deletePosts = (postId: string): Promise<void> =>
 
 export const createNewPost = (title: string, body: string, userId: number, date: string): Promise<void> =>
   new Promise((resolve, reject) => {
-    connection.all(createPostTemplate, [title, body, userId, date], (error, result) => {
+    const id = crypto.randomBytes(16).toString("hex");
+    connection.all(createPostTemplate, [title, body, userId, date, id], (error, result) => {
       if (error) {
         reject(error);
       }
